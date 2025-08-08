@@ -58,3 +58,15 @@ mdit-py-plugins==0.6.0
 mdurl==0.1.2
 mistune==3.2.1
 nbclient==0.10.4
+nbconvert==7.17.1
+nbformat==5.10.4
+nest-asyncio==1.6.0
+notebook==7.5.6
+notebook_shim==0.2.4
+numpy==2.4.4
+packaging==26.2
+pandocfilters==1.5.1
+parso==0.8.7
+pillow==12.2.0
+platformdirs==4.9.6
+pluggy==1.6.0
