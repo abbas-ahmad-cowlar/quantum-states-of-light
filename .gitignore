@@ -1,0 +1,43 @@
+# Private local archive
+.private_archive/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Jupyter local state
+.ipynb_checkpoints/
+
+# Virtual environments and local environment files
+venv/
+.venv/
+env/
+.env
+
+# Packaging and build artifacts
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Large generated data outputs
+*.hdf5
+*.h5
+
+# Temporary, backup, and log files
+*.tmp
+*.bak
+*.log
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and IDE local settings
+.vscode/
+.idea/
+*.swp
+*.swo
