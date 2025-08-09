@@ -1,0 +1,11 @@
+qutip>=5.0.0,<6
+numpy>=1.26,<3
+scipy>=1.11,<2
+matplotlib>=3.8,<4
+jupyter>=1.0,<2
+jupyterlab>=4,<5
+notebook>=7,<8
+nbconvert>=7,<8
+ipykernel>=6,<7
+pytest>=8,<9
+jupytext>=1.16,<2
