@@ -82,3 +82,15 @@ python-dateutil==2.9.0.post0
 python-json-logger==4.1.0
 pywinpty==3.0.3
 PyYAML==6.0.3
+pyzmq==27.1.0
+qutip==5.2.3
+referencing==0.37.0
+requests==2.33.1
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+rfc3987-syntax==1.1.0
+rpds-py==0.30.0
+scipy==1.17.1
+Send2Trash==2.1.0
+setuptools==82.0.1
+six==1.17.0
