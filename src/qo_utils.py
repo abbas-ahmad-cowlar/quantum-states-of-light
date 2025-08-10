@@ -176,3 +176,55 @@ def compute_g2_zero(state, a):
 # Function 1: photon_distribution
 # =========================================================================
 
+def photon_distribution(state, n_max=None):
+    """
+    Compute the photon number distribution P(n) = |<n|psi>|^2 for a quantum state.
+
+    Physics: P(n) is the probability of detecting exactly n photons.
+    - For Fock states: P(n) is a delta function (all probability on one number)
+    - For coherent states: P(n) is a Poisson distribution
+    - For thermal states: P(n) is a Bose-Einstein (geometric) distribution
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket vector or density matrix).
+    n_max : int, optional
+        Number of probabilities to return. If omitted, uses the state's Hilbert
+        space dimension.
+
+    Returns
+    -------
+    probabilities : numpy.ndarray
+        Array of length n_max with P(n) for n = 0, 1, ..., n_max-1.
+
+    Raises
+    ------
+    ValueError
+        If state is not a valid quantum object (ket or density matrix).
+    """
+    if not (state.isket or state.isoper):
+        raise ValueError(f"Expected ket or density matrix, got {state.type}")
+    if len(state.dims[0]) != 1:
+        raise ValueError("photon_distribution is single-mode only.")
+
+    dim = state.shape[0]
+    if n_max is None:
+        n_max = dim
+    if n_max > dim:
+        raise ValueError(f"n_max={n_max} exceeds state dimension {dim}")
+
+    if state.isket:
+        probabilities = np.abs(state.full().ravel())**2
+    else:
+        probabilities = np.real(np.diag(state.full()))
+
+    probabilities = np.array(probabilities[:n_max], dtype=float, copy=True)
+    probabilities[np.isclose(probabilities, 0.0, atol=1e-15)] = 0.0
+    return probabilities
+
+
+# =========================================================================
+# Function 2: plot_photon_distribution
+# =========================================================================
+
