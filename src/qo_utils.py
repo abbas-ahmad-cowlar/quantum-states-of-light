@@ -87,3 +87,39 @@ def photon_variance(state, a):
 # Function 7: mandel_Q
 # =========================================================================
 
+def mandel_Q(state, a):
+    """
+    Compute the Mandel Q parameter: Q = (Dn^2 - <n>) / <n>.
+
+    Physics: Measures departure from Poissonian statistics.
+    - Q < 0: sub-Poissonian (non-classical, anti-bunching)
+    - Q = 0: Poissonian (coherent state, boundary)
+    - Q > 0: super-Poissonian (bunching, thermal-like)
+
+    Related to g^(2)(0) by: g^(2)(0) = 1 + Q/<n>
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    a : qutip.Qobj
+        Annihilation operator.
+
+    Returns
+    -------
+    float
+        The Mandel Q parameter. Returns np.nan for vacuum (<n> = 0).
+    """
+    mean_n = mean_photon_number(state, a)
+
+    if mean_n < 1e-10:
+        return np.nan
+
+    var_n = photon_variance(state, a)
+    return (var_n - mean_n) / mean_n
+
+
+# =========================================================================
+# Function 4: compute_g2_zero
+# =========================================================================
+
