@@ -28,3 +28,31 @@ from scipy.stats import poisson
 # Function 5: mean_photon_number
 # =========================================================================
 
+def mean_photon_number(state, a):
+    """
+    Compute the mean photon number <n_hat> = <a_dag a>.
+
+    Physics: The average number of photons in the state.
+    - Fock |n>: <n_hat> = n (exactly n photons)
+    - Coherent |alpha>: <n_hat> = |alpha|^2 (proportional to intensity)
+    - Thermal (n_bar): <n_hat> = n_bar = 1/(exp(hbar*omega/kT) - 1)
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    a : qutip.Qobj
+        Annihilation operator.
+
+    Returns
+    -------
+    float
+        The mean photon number <n_hat>.
+    """
+    return np.real(qutip.expect(a.dag() * a, state))
+
+
+# =========================================================================
+# Function 6: photon_variance
+# =========================================================================
+
