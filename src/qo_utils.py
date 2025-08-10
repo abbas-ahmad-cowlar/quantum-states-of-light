@@ -56,3 +56,34 @@ def mean_photon_number(state, a):
 # Function 6: photon_variance
 # =========================================================================
 
+def photon_variance(state, a):
+    """
+    Compute the photon number variance Dn^2 = <n_hat^2> - <n_hat>^2.
+
+    Physics: Measures the spread in photon number.
+    - Fock |n>: Dn^2 = 0 (exactly n photons, zero uncertainty)
+    - Coherent |alpha>: Dn^2 = |alpha|^2 = <n> (Poissonian: variance = mean)
+    - Thermal: Dn^2 = <n>(1 + <n>) (super-Poissonian: variance > mean)
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    a : qutip.Qobj
+        Annihilation operator.
+
+    Returns
+    -------
+    float
+        The photon number variance Dn^2.
+    """
+    n_op = a.dag() * a
+    mean_n = np.real(qutip.expect(n_op, state))
+    mean_n_sq = np.real(qutip.expect(n_op * n_op, state))
+    return mean_n_sq - mean_n**2
+
+
+# =========================================================================
+# Function 7: mandel_Q
+# =========================================================================
+
