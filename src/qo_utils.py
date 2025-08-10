@@ -228,3 +228,75 @@ def photon_distribution(state, n_max=None):
 # Function 2: plot_photon_distribution
 # =========================================================================
 
+def plot_photon_distribution(state, n_max=None, title="", ax=None, color='steelblue',
+                              show_stats=True):
+    """
+    Plot the photon number distribution P(n) as a bar chart.
+
+    Physics: Visualizes the probability of finding n photons in the state.
+    The shape of this distribution classifies the type of light:
+    - Delta function -> Fock state
+    - Poissonian (bell) -> Coherent state (laser)
+    - Geometric (exponential decay) -> Thermal state
+    - Even-only bars -> Squeezed vacuum
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    n_max : int, optional
+        Number of Fock states to plot. If omitted, uses the state dimension.
+    title : str
+        Plot title (supports LaTeX: r"$|\\alpha=3\\rangle$").
+    ax : matplotlib.axes.Axes, optional
+        Axes to plot on. If None, creates a new figure.
+    color : str
+        Bar color. If omitted, uses 'steelblue'.
+    show_stats : bool
+        If True, annotate with <n> and Dn on the plot.
+
+    Returns
+    -------
+    ax : matplotlib.axes.Axes
+        The axes object (for further customization or multi-panel figures).
+    """
+    if len(state.dims[0]) != 1:
+        raise ValueError("plot_photon_distribution is single-mode only.")
+
+    dim = state.shape[0]
+    if n_max is None:
+        n_max = dim
+    if n_max > dim:
+        raise ValueError(f"n_max={n_max} exceeds state dimension {dim}")
+
+    P = photon_distribution(state, n_max=n_max)
+    n_values = np.arange(n_max)
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+    ax.bar(n_values, P, color=color, alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax.set_xlabel(r'Photon number $n$', fontsize=12)
+    ax.set_ylabel(r'$P(n)$', fontsize=12)
+    ax.set_title(title, fontsize=14)
+    ax.set_xlim(-0.5, n_max - 0.5)
+    ax.set_ylim(0, max(P) * 1.15 if len(P) and max(P) > 0 else 1)
+
+    if show_stats:
+        a = qutip.destroy(dim)
+        mn = mean_photon_number(state, a)
+        var_n = photon_variance(state, a)
+        delta_n = np.sqrt(max(var_n, 0))  # Guard against tiny negative from numerics
+        ax.text(0.95, 0.95,
+                f'$\\langle n \\rangle = {mn:.2f}$\n$\\Delta n = {delta_n:.2f}$',
+                transform=ax.transAxes, fontsize=10,
+                verticalalignment='top', horizontalalignment='right',
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
+
+    return ax
+
+
+# =========================================================================
+# Function 3: plot_wigner + wigner_normalization
+# =========================================================================
+
