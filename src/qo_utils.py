@@ -300,3 +300,15 @@ def plot_photon_distribution(state, n_max=None, title="", ax=None, color='steelb
 # Function 3: plot_wigner + wigner_normalization
 # =========================================================================
 
+def _trapz_compat(y, x, axis):
+    """
+    NumPy 1.26/2.x compatible trapezoidal integration.
+
+    NumPy 2.x provides np.trapezoid; NumPy 1.x uses np.trapz. The project
+    allows NumPy >=1.26, so the helper must support both.
+    """
+    if hasattr(np, "trapezoid"):
+        return np.trapezoid(y, x, axis=axis)
+    return np.trapz(y, x, axis=axis)
+
+
