@@ -123,3 +123,56 @@ def mandel_Q(state, a):
 # Function 4: compute_g2_zero
 # =========================================================================
 
+def compute_g2_zero(state, a):
+    """
+    Compute the second-order coherence function g^(2)(0).
+
+    Physics: g^(2)(0) = <a_dag a_dag a a> / <a_dag a>^2 = <n_hat(n_hat-1)> / <n_hat>^2
+
+    This is a central zero-delay photon-correlation diagnostic:
+    - g^(2)(0) = 2    -> nonzero thermal state (bunching, super-Poissonian)
+    - g^(2)(0) = 1    -> Poissonian second-order statistics
+    - g^(2)(0) < 1    -> anti-bunched/sub-Poissonian
+    - g^(2)(0) = 0    -> single photon source |1>
+
+    It is not a complete state classifier; interpret it with P(n), Wigner
+    functions, quadrature variances, and truncation diagnostics.
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    a : qutip.Qobj
+        Annihilation operator for the mode.
+
+    Returns
+    -------
+    g2 : float
+        The g^(2)(0) value. Returns np.nan for vacuum state (<n> = 0).
+
+    Notes
+    -----
+    CRITICAL: The numerator is <a_dag a_dag a a>, NOT <(a_dag a)^2> = <n_hat^2>.
+    The difference: <a_dag a_dag a a> = <n_hat^2 - n_hat> = <n_hat(n_hat-1)>.
+    Using (a.dag()*a)**2 instead gives WRONG results.
+    """
+    # Compute <n_hat> = <a_dag a>
+    mean_n = qutip.expect(a.dag() * a, state)
+
+    # Guard: g^(2)(0) is undefined for vacuum (division by zero)
+    if mean_n < 1e-10:
+        return np.nan
+
+    # Compute <a_dag a_dag a a> -- NOTE THE OPERATOR ORDERING!
+    # This is a.dag() * a.dag() * a * a, NOT (a.dag() * a)**2
+    numerator = qutip.expect(a.dag() * a.dag() * a * a, state)
+
+    g2 = numerator / mean_n**2
+
+    return np.real(g2)  # Should be real; discard floating-point imaginary noise
+
+
+# =========================================================================
+# Function 1: photon_distribution
+# =========================================================================
+
