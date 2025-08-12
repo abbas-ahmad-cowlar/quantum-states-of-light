@@ -419,3 +419,15 @@ def thermal_tail(N, n_bar):
     return ratio ** N
 
 
+def squeezed_vacuum_probabilities(N, r):
+    """Ideal squeezed-vacuum photon probabilities through n=N-1."""
+    probs = np.zeros(N, dtype=float)
+    t2 = np.tanh(r) ** 2
+    norm = 1.0 / np.cosh(r)
+    for n in range(0, N, 2):
+        m = n // 2
+        central = math.comb(2 * m, m) / (4 ** m)
+        probs[n] = norm * central * (t2 ** m)
+    return probs
+
+
