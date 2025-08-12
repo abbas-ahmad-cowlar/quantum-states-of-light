@@ -312,3 +312,22 @@ def _trapz_compat(y, x, axis):
     return np.trapz(y, x, axis=axis)
 
 
+def wigner_normalization(W, xvec, yvec):
+    """
+    Numerically integrate a Wigner function over the plotted phase-space grid.
+
+    Returns integral W(x,p) dx dp. For a sufficiently large grid this should
+    be close to 1.0. Uses a compatibility helper so NumPy 1.26 and 2.x both work.
+    """
+    W = np.asarray(W)
+    if W.shape == (len(yvec), len(xvec)):
+        # Standard plotting convention: rows follow y/p, columns follow x.
+        return _trapz_compat(_trapz_compat(W, xvec, axis=1), yvec, axis=0)
+    if W.shape == (len(xvec), len(yvec)):
+        # Fallback for transposed arrays on non-square grids.
+        return _trapz_compat(_trapz_compat(W, yvec, axis=1), xvec, axis=0)
+    raise ValueError(
+        f"W shape {W.shape} is incompatible with xvec={len(xvec)}, yvec={len(yvec)}"
+    )
+
+
