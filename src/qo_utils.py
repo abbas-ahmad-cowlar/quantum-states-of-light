@@ -331,3 +331,76 @@ def wigner_normalization(W, xvec, yvec):
     )
 
 
+def plot_wigner(state, xvec=None, yvec=None, title="", ax=None,
+                colormap='RdBu_r', show_colorbar=True):
+    """
+    Plot the Wigner function W(x, p) of a quantum state as a 2D colormap.
+    This project uses QuTiP's standard g=sqrt(2) convention, so a coherent
+    state |alpha> is centered at (sqrt(2) Re alpha, sqrt(2) Im alpha).
+
+    Physics: The Wigner function is a quasi-probability distribution in
+    phase space (x, p coordinates). Key features:
+    - Normalized: integral W(x,p) dx dp = 1
+    - CAN be negative (non-classicality witness)
+    - Positive Gaussian -> classical-like state (coherent)
+    - Negative regions -> non-Gaussian nonclassicality (Fock, cat states)
+    - Note: squeezed vacuum is nonclassical but Wigner-POSITIVE
+
+    Parameters
+    ----------
+    state : qutip.Qobj
+        Quantum state (ket or density matrix).
+    xvec : numpy.ndarray, optional
+        x-axis grid points. If omitted, uses np.linspace(-6, 6, 200).
+    yvec : numpy.ndarray, optional
+        p-axis grid points. If omitted, uses same values as xvec.
+    title : str
+        Plot title (supports LaTeX).
+    ax : matplotlib.axes.Axes, optional
+        Axes to plot on. If None, creates new figure.
+    colormap : str
+        Colormap name. If omitted, uses 'RdBu_r' (diverging with neutral midpoint).
+    show_colorbar : bool
+        Whether to add a colorbar.
+
+    Returns
+    -------
+    ax : matplotlib.axes.Axes
+        The axes object.
+    W : numpy.ndarray
+        The computed Wigner function values (for further analysis).
+    """
+    if xvec is None:
+        xvec = np.linspace(-6, 6, 200)
+    if yvec is None:
+        yvec = xvec.copy()
+
+    # Compute Wigner function using QuTiP
+    W = qutip.wigner(state, xvec, yvec)
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(6, 5))
+
+    # Use explicit symmetric levels so zero is visually centered.
+    wmax = np.max(np.abs(W))
+    if wmax == 0:
+        wmax = 1.0
+    levels = np.linspace(-wmax, wmax, 101)
+
+    im = ax.contourf(xvec, yvec, W, levels=levels, cmap=colormap, extend='both')
+
+    if show_colorbar:
+        plt.colorbar(im, ax=ax, label=r'$W(x, p)$')
+
+    ax.set_xlabel(r'$x$ (position quadrature)', fontsize=12)
+    ax.set_ylabel(r'$p$ (momentum quadrature)', fontsize=12)
+    ax.set_title(title, fontsize=14)
+    ax.set_aspect('equal')
+
+    return ax, W
+
+
+# =========================================================================
+# Numerical Safety Helpers
+# =========================================================================
+
