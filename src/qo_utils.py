@@ -431,3 +431,8 @@ def squeezed_vacuum_probabilities(N, r):
     return probs
 
 
+def squeezed_vacuum_tail(N, r):
+    """Omitted ideal squeezed-vacuum probability above cutoff N-1."""
+    return max(0.0, 1.0 - squeezed_vacuum_probabilities(N, r).sum())
+
+
