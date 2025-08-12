@@ -404,3 +404,8 @@ def plot_wigner(state, xvec=None, yvec=None, title="", ax=None,
 # Numerical Safety Helpers
 # =========================================================================
 
+def coherent_tail(N, alpha):
+    """Analytic Poisson tail P(n >= N) for an ideal coherent state."""
+    return float(poisson.sf(N - 1, abs(alpha) ** 2))
+
+
