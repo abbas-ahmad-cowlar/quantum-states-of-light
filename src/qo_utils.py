@@ -409,3 +409,13 @@ def coherent_tail(N, alpha):
     return float(poisson.sf(N - 1, abs(alpha) ** 2))
 
 
+def thermal_tail(N, n_bar):
+    """Analytic geometric tail P(n >= N) for an ideal thermal state."""
+    if n_bar < 0:
+        raise ValueError("n_bar must be non-negative")
+    if n_bar == 0:
+        return 0.0
+    ratio = n_bar / (1.0 + n_bar)
+    return ratio ** N
+
+
