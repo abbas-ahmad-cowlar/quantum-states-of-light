@@ -436,3 +436,18 @@ def squeezed_vacuum_tail(N, r):
     return max(0.0, 1.0 - squeezed_vacuum_probabilities(N, r).sum())
 
 
+def cutoff_from_tail(tail_fn, tolerance=1e-3, start=10, max_n=500):
+    """Choose photon-distribution n_max so omitted P(n >= n_max) is small.
+
+    The project's plot_photon_distribution(..., n_max=n_max) convention plots
+    photon numbers 0 through n_max-1. Therefore tail_fn(n_max) must return the
+    omitted analytic tail P(n >= n_max).
+    """
+    n_max = int(start)
+    while n_max < max_n and tail_fn(n_max) > tolerance:
+        n_max += 1
+    if n_max >= max_n:
+        raise RuntimeError("Could not find a safe photon-number cutoff")
+    return n_max
+
+
