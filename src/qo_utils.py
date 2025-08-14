@@ -463,3 +463,12 @@ def squeezed_wigner_extent(r_values, nsigma=4, floor=6.0):
     return max(float(floor), float(nsigma) * anti_squeezed_std)
 
 
+def wigner_sign_summary(W, tol=1e-8):
+    """Return a computed sign summary for a Wigner grid."""
+    w_min = float(np.min(W))
+    w_max = float(np.max(W))
+    if w_min < -tol:
+        sign = "has negative regions"
+    else:
+        sign = "nonnegative on plotted grid"
+    return sign, w_min, w_max
