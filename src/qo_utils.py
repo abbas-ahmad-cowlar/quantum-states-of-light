@@ -451,3 +451,15 @@ def cutoff_from_tail(tail_fn, tolerance=1e-3, start=10, max_n=500):
     return n_max
 
 
+def squeezed_wigner_extent(r_values, nsigma=4, floor=6.0):
+    """Choose a Wigner grid half-width for squeezed states.
+
+    For real squeezing r, the anti-squeezed quadrature standard deviation is
+    exp(r)/sqrt(2) in the X,P convention used throughout the project.
+    """
+    values = np.atleast_1d(r_values).astype(float)
+    r_max = float(np.max(np.abs(values)))
+    anti_squeezed_std = np.exp(r_max) / np.sqrt(2)
+    return max(float(floor), float(nsigma) * anti_squeezed_std)
+
+
