@@ -34,3 +34,6 @@ def test_mean_photon_vacuum():
 def test_mean_photon_fock5():
     assert np.isclose(mean_photon_number(qutip.basis(N, 5), a), 5.0)
 
+def test_mean_photon_coherent():
+    assert np.isclose(mean_photon_number(qutip.coherent(N, 3.0), a), 9.0, atol=0.1)
+
