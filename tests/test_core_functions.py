@@ -52,3 +52,6 @@ def test_variance_coherent():
 
 # === mandel_Q ===
 
+def test_mandel_Q_fock():
+    assert np.isclose(mandel_Q(qutip.basis(N, 3), a), -1.0, atol=1e-10)
+
