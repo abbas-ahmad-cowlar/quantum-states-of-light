@@ -46,3 +46,9 @@ def test_mean_photon_thermal():
 def test_variance_fock():
     assert np.isclose(photon_variance(qutip.basis(N, 3), a), 0.0, atol=1e-10)
 
+def test_variance_coherent():
+    assert np.isclose(photon_variance(qutip.coherent(N, 3.0), a), 9.0, atol=0.1)
+
+
+# === mandel_Q ===
+
