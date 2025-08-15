@@ -28,3 +28,6 @@ a = qutip.destroy(N)
 
 # === mean_photon_number ===
 
+def test_mean_photon_vacuum():
+    assert np.isclose(mean_photon_number(qutip.basis(N, 0), a), 0.0)
+
