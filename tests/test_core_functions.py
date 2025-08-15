@@ -43,3 +43,6 @@ def test_mean_photon_thermal():
 
 # === photon_variance ===
 
+def test_variance_fock():
+    assert np.isclose(photon_variance(qutip.basis(N, 3), a), 0.0, atol=1e-10)
+
