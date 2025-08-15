@@ -37,3 +37,9 @@ def test_mean_photon_fock5():
 def test_mean_photon_coherent():
     assert np.isclose(mean_photon_number(qutip.coherent(N, 3.0), a), 9.0, atol=0.1)
 
+def test_mean_photon_thermal():
+    assert np.isclose(mean_photon_number(qutip.thermal_dm(N, 2.0), a), 2.0, atol=0.1)
+
+
+# === photon_variance ===
+
