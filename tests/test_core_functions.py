@@ -58,3 +58,10 @@ def test_mandel_Q_fock():
 def test_mandel_Q_coherent():
     assert np.isclose(mandel_Q(qutip.coherent(N, 3.0), a), 0.0, atol=1e-4)
 
+def test_mandel_Q_thermal_positive():
+    Q_th = mandel_Q(qutip.thermal_dm(N, 3.0), a)
+    assert Q_th > 0, f"Q should be positive for thermal, got {Q_th}"
+
+
+# === g2/Q cross-check ===
+
