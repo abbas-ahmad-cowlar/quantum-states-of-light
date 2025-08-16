@@ -83,3 +83,7 @@ def test_g2_fock3():
     g2 = compute_g2_zero(qutip.basis(N, 3), a)
     assert np.isclose(g2, 1 - 1 / 3, atol=1e-10)
 
+def test_g2_coherent():
+    g2 = compute_g2_zero(qutip.coherent(N, 3.0), a)
+    assert np.isclose(g2, 1.0, atol=1e-6)
+
