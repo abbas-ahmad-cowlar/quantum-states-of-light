@@ -91,3 +91,10 @@ def test_g2_thermal():
     g2 = compute_g2_zero(qutip.thermal_dm(N, 3.0), a)
     assert np.isclose(g2, 2.0, atol=0.01)
 
+def test_g2_vacuum_nan():
+    g2 = compute_g2_zero(qutip.basis(N, 0), a)
+    assert np.isnan(g2)
+
+
+# === photon_distribution ===
+
