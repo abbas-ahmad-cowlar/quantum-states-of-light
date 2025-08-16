@@ -75,3 +75,7 @@ def test_g2_Q_crosscheck():
 
 # === compute_g2_zero ===
 
+def test_g2_single_photon():
+    g2 = compute_g2_zero(qutip.basis(N, 1), a)
+    assert np.isclose(g2, 0.0, atol=1e-10)
+
