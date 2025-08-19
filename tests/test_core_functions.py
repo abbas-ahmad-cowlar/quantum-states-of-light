@@ -135,3 +135,6 @@ def test_thermal_tail_basic():
     expected = (n_bar / (1 + n_bar)) ** N_test
     assert np.isclose(thermal_tail(N_test, n_bar), expected)
 
+def test_thermal_tail_zero_nbar():
+    assert thermal_tail(10, 0.0) == 0.0
+
