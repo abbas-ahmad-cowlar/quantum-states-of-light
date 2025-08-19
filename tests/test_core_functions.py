@@ -124,3 +124,7 @@ def test_coherent_tail_small():
     """Poisson tail for alpha=3, N=40 should be negligible."""
     assert coherent_tail(40, 3.0) < 1e-8
 
+def test_coherent_tail_large():
+    """Poisson tail for alpha=5, N=15 should be large."""
+    assert coherent_tail(15, 5.0) > 0.5
+
