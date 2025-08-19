@@ -98,3 +98,9 @@ def test_g2_vacuum_nan():
 
 # === photon_distribution ===
 
+def test_photon_dist_fock():
+    P = photon_distribution(qutip.basis(N, 3))
+    assert np.isclose(P[3], 1.0)
+    assert np.isclose(P.sum(), 1.0)
+    assert np.isclose(P[0], 0.0)
+
