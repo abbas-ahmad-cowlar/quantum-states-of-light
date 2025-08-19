@@ -120,3 +120,7 @@ def test_photon_dist_thermal_normalized():
 
 # === tail helpers (Finding 4 fix) ===
 
+def test_coherent_tail_small():
+    """Poisson tail for alpha=3, N=40 should be negligible."""
+    assert coherent_tail(40, 3.0) < 1e-8
+
