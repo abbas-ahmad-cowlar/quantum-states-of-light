@@ -113,3 +113,10 @@ def test_photon_dist_coherent_poisson():
         expected = np.exp(-alpha_sq) * alpha_sq**n / math.factorial(n)
         assert np.isclose(P[n], expected, atol=1e-6), f"P({n}) mismatch"
 
+def test_photon_dist_thermal_normalized():
+    P = photon_distribution(qutip.thermal_dm(N, 2.0))
+    assert np.isclose(P.sum(), 1.0, atol=1e-12)
+
+
+# === tail helpers (Finding 4 fix) ===
+
