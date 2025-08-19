@@ -104,3 +104,12 @@ def test_photon_dist_fock():
     assert np.isclose(P.sum(), 1.0)
     assert np.isclose(P[0], 0.0)
 
+def test_photon_dist_coherent_poisson():
+    state = qutip.coherent(N, 2.0)
+    P = photon_distribution(state)
+    assert np.isclose(P.sum(), 1.0, atol=1e-12)
+    alpha_sq = 4.0
+    for n in range(10):
+        expected = np.exp(-alpha_sq) * alpha_sq**n / math.factorial(n)
+        assert np.isclose(P[n], expected, atol=1e-6), f"P({n}) mismatch"
+
