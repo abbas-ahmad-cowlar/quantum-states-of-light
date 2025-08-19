@@ -128,3 +128,10 @@ def test_coherent_tail_large():
     """Poisson tail for alpha=5, N=15 should be large."""
     assert coherent_tail(15, 5.0) > 0.5
 
+def test_thermal_tail_basic():
+    """Geometric tail P(n>=N) = (n_bar/(1+n_bar))^N."""
+    n_bar = 2.0
+    N_test = 20
+    expected = (n_bar / (1 + n_bar)) ** N_test
+    assert np.isclose(thermal_tail(N_test, n_bar), expected)
+
