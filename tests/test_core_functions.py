@@ -138,3 +138,7 @@ def test_thermal_tail_basic():
 def test_thermal_tail_zero_nbar():
     assert thermal_tail(10, 0.0) == 0.0
 
+def test_thermal_tail_negative_raises():
+    with pytest.raises(ValueError):
+        thermal_tail(10, -1.0)
+
