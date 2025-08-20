@@ -146,3 +146,8 @@ def test_squeezed_vacuum_tail_r0():
     """r=0 is vacuum; all probability on n=0, tail should be 0."""
     assert np.isclose(squeezed_vacuum_tail(10, 0.0), 0.0, atol=1e-15)
 
+def test_squeezed_vacuum_tail_r1():
+    """r=1 squeezed vacuum: tail at N=50 should be small."""
+    tail = squeezed_vacuum_tail(50, 1.0)
+    assert tail < 0.01, f"Squeezed tail at N=50, r=1 too large: {tail}"
+
