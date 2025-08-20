@@ -37,3 +37,7 @@ alpha = 3.0
 state = qutip.coherent(N, alpha)
 
 
+def test_photon_distribution_normalized():
+    P = photon_distribution(state)
+    assert np.isclose(P.sum(), 1.0, atol=1e-12)
+
