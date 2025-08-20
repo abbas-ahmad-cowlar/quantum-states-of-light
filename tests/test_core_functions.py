@@ -142,3 +142,7 @@ def test_thermal_tail_negative_raises():
     with pytest.raises(ValueError):
         thermal_tail(10, -1.0)
 
+def test_squeezed_vacuum_tail_r0():
+    """r=0 is vacuum; all probability on n=0, tail should be 0."""
+    assert np.isclose(squeezed_vacuum_tail(10, 0.0), 0.0, atol=1e-15)
+
