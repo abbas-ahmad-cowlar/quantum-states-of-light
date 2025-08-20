@@ -44,3 +44,7 @@ def test_photon_distribution_normalized():
 def test_coherent_tail_negligible():
     assert coherent_tail(N, alpha) < 1e-8
 
+def test_boundary_probability_tiny():
+    P = photon_distribution(state)
+    assert P[-1] < 1e-8
+
