@@ -41,3 +41,6 @@ def test_photon_distribution_normalized():
     P = photon_distribution(state)
     assert np.isclose(P.sum(), 1.0, atol=1e-12)
 
+def test_coherent_tail_negligible():
+    assert coherent_tail(N, alpha) < 1e-8
+
