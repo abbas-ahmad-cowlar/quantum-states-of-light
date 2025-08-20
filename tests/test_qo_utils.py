@@ -52,3 +52,7 @@ def test_mean_photon_number():
     mn = mean_photon_number(state, a)
     assert np.isclose(mn, 9.0, atol=0.1)
 
+def test_photon_variance():
+    var = photon_variance(state, a)
+    assert np.isclose(var, 9.0, atol=0.2)
+
