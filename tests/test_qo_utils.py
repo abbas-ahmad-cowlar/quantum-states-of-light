@@ -48,3 +48,7 @@ def test_boundary_probability_tiny():
     P = photon_distribution(state)
     assert P[-1] < 1e-8
 
+def test_mean_photon_number():
+    mn = mean_photon_number(state, a)
+    assert np.isclose(mn, 9.0, atol=0.1)
+
