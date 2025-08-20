@@ -151,3 +151,9 @@ def test_squeezed_vacuum_tail_r1():
     tail = squeezed_vacuum_tail(50, 1.0)
     assert tail < 0.01, f"Squeezed tail at N=50, r=1 too large: {tail}"
 
+def test_squeezed_vacuum_even_only():
+    """Squeezed vacuum has zero probability on odd photon numbers."""
+    from qo_utils import squeezed_vacuum_probabilities
+    probs = squeezed_vacuum_probabilities(20, 1.0)
+    for n in range(1, 20, 2):  # odd indices
+        assert np.isclose(probs[n], 0.0, atol=1e-15), f"P({n}) should be 0"
