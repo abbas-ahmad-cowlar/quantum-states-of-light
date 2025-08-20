@@ -56,3 +56,7 @@ def test_photon_variance():
     var = photon_variance(state, a)
     assert np.isclose(var, 9.0, atol=0.2)
 
+def test_g2_zero_coherent():
+    g2 = compute_g2_zero(state, a)
+    assert np.isclose(g2, 1.0, atol=1e-4)
+
