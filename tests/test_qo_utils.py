@@ -1,0 +1,39 @@
+"""
+Integration test for qo_utils.py.
+Tests the full utility module with a coherent state as the reference.
+"""
+import sys
+from pathlib import Path
+import numpy as np
+import pytest
+import qutip
+import matplotlib
+matplotlib.use('Agg')
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_DIR = PROJECT_ROOT / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+from qo_utils import (
+    photon_distribution,
+    wigner_normalization,
+    coherent_tail,
+    cutoff_from_tail,
+    squeezed_wigner_extent,
+    wigner_sign_summary,
+    compute_g2_zero,
+    mean_photon_number,
+    photon_variance,
+    mandel_Q,
+    plot_photon_distribution,
+    plot_wigner,
+)
+
+
+# Shared fixtures
+N = 40
+a = qutip.destroy(N)
+alpha = 3.0
+state = qutip.coherent(N, alpha)
+
+
