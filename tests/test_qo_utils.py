@@ -60,3 +60,7 @@ def test_g2_zero_coherent():
     g2 = compute_g2_zero(state, a)
     assert np.isclose(g2, 1.0, atol=1e-4)
 
+def test_mandel_Q_coherent():
+    Q = mandel_Q(state, a)
+    assert np.isclose(Q, 0.0, atol=1e-3)
+
