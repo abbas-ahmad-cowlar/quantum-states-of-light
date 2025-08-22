@@ -70,3 +70,8 @@ def test_g2_Q_crosscheck():
     mn = mean_photon_number(state, a)
     assert np.isclose(g2, 1 + Q / mn, atol=1e-6)
 
+def test_wigner_positive_for_coherent():
+    xvec = np.linspace(-8, 8, 100)
+    W = qutip.wigner(state, xvec, xvec)
+    assert np.all(W >= -1e-6), f"Wigner min = {np.min(W):.2e}"
+
