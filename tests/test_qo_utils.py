@@ -97,3 +97,9 @@ def test_wigner_sign_summary_coherent():
     sign, w_min, w_max = wigner_sign_summary(W, tol=1e-6)
     assert sign == "nonnegative on plotted grid"
 
+def test_plot_functions_no_crash():
+    import matplotlib.pyplot as plt
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+    plot_photon_distribution(state, n_max=20, title="Coherent test", ax=ax1)
+    plot_wigner(state, xvec=np.linspace(-8, 8, 50), title="Wigner test", ax=ax2)
+    plt.close(fig)
