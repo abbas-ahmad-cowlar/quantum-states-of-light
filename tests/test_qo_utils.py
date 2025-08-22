@@ -91,3 +91,9 @@ def test_squeezed_wigner_extent():
     extent = squeezed_wigner_extent([0.0, 0.5, 1.0, 1.5], nsigma=4)
     assert extent > 8.0
 
+def test_wigner_sign_summary_coherent():
+    xvec = np.linspace(-8, 8, 100)
+    W = qutip.wigner(state, xvec, xvec)
+    sign, w_min, w_max = wigner_sign_summary(W, tol=1e-6)
+    assert sign == "nonnegative on plotted grid"
+
