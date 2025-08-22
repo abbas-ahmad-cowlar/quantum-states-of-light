@@ -75,3 +75,9 @@ def test_wigner_positive_for_coherent():
     W = qutip.wigner(state, xvec, xvec)
     assert np.all(W >= -1e-6), f"Wigner min = {np.min(W):.2e}"
 
+def test_wigner_normalization():
+    xvec = np.linspace(-8, 8, 100)
+    W = qutip.wigner(state, xvec, xvec)
+    norm = wigner_normalization(W, xvec, xvec)
+    assert np.isclose(norm, 1.0, atol=5e-3)
+
