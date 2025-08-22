@@ -87,3 +87,7 @@ def test_cutoff_from_tail():
     )
     assert coherent_tail(n_plot, alpha) < 1e-3
 
+def test_squeezed_wigner_extent():
+    extent = squeezed_wigner_extent([0.0, 0.5, 1.0, 1.5], nsigma=4)
+    assert extent > 8.0
+
