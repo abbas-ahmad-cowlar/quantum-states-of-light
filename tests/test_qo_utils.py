@@ -64,3 +64,9 @@ def test_mandel_Q_coherent():
     Q = mandel_Q(state, a)
     assert np.isclose(Q, 0.0, atol=1e-3)
 
+def test_g2_Q_crosscheck():
+    g2 = compute_g2_zero(state, a)
+    Q = mandel_Q(state, a)
+    mn = mean_photon_number(state, a)
+    assert np.isclose(g2, 1 + Q / mn, atol=1e-6)
+
