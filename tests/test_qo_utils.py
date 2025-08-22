@@ -81,3 +81,9 @@ def test_wigner_normalization():
     norm = wigner_normalization(W, xvec, xvec)
     assert np.isclose(norm, 1.0, atol=5e-3)
 
+def test_cutoff_from_tail():
+    n_plot = cutoff_from_tail(
+        lambda cutoff: coherent_tail(cutoff, alpha), tolerance=1e-3, start=10
+    )
+    assert coherent_tail(n_plot, alpha) < 1e-3
+
