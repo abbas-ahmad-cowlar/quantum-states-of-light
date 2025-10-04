@@ -1,0 +1,8 @@
+Python: 3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]
+OS: Windows-11-10.0.26200-SP0
+qutip: 5.2.3
+numpy: 2.4.4
+scipy: 1.17.1
+matplotlib: 3.10.9
+Note: Python 3.14 is outside the project context's documented 3.10-3.12 tested range.
+      All tests pass locally; no compatibility issues encountered with QuTiP 5.2.3.
