@@ -29,3 +29,11 @@ The project covers:
 
 ## Key Results
 
+### Wigner Function Gallery
+
+![Wigner functions of six fundamental quantum states of light](figures/wigner_gallery_6panel.png)
+
+Six phase-space portraits on a shared X,P convention, including Wigner
+negativity for Fock states and Gaussian positivity for coherent,
+squeezed-vacuum, and squeezed-coherent examples.
+
