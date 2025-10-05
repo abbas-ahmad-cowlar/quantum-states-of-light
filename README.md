@@ -11,3 +11,19 @@ light, computes photon statistics and Wigner functions, and simulates standard
 two-mode experiments such as Hong-Ou-Mandel interference and CHSH Bell
 violation.
 
+## Scope
+
+The project covers:
+
+- Quantum state construction: Fock, coherent, squeezed vacuum, squeezed
+  coherent, and thermal states.
+- Photon statistics: photon-number distributions, zero-delay coherence
+  g^2(0), and Mandel Q.
+- Phase-space analysis: Wigner functions, normalization checks, and Wigner
+  negativity.
+- Two-mode optics: beam splitter transformations and Hong-Ou-Mandel
+  interference.
+- Entanglement diagnostics: Bell states, concurrence, and CHSH violation.
+- Reproducibility: fixed dependency records, validation tests, and notebook
+  verification.
+
