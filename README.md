@@ -103,3 +103,14 @@ and generate the Fock-space basis used throughout the notebooks.
 
 </details>
 
+## Notebooks
+
+| # | Notebook | Topic | Main Checks |
+|---|----------|-------|-------------|
+| 1 | `01_fock_states.ipynb` | Fock states | Photon-number states, g^2(0), Wigner negativity |
+| 2 | `02_coherent_states.ipynb` | Coherent states | Poisson statistics and displaced Gaussian Wigner functions |
+| 3 | `03_squeezed_states.ipynb` | Squeezed states | Quadrature squeezing, uncertainty ellipses, even-photon structure |
+| 4 | `04_photon_statistics.ipynb` | Photon statistics | g^2(0), Mandel Q, and comparison tables |
+| 5 | `05_beam_splitter_hom.ipynb` | Beam splitters and HOM | Two-photon interference and P(1,1) = 0 |
+| 6 | `06_entanglement_bell.ipynb` | Entanglement and Bell tests | CHSH violation, correlations, and concurrence |
+
