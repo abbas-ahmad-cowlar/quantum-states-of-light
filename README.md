@@ -45,3 +45,10 @@ Zero-delay photon-correlation regimes: antibunching, Poissonian light, and
 bunching. The value of g^2(0) is a useful diagnostic, not a complete state
 classifier.
 
+### Hong-Ou-Mandel Interference
+
+![HOM dip simulation showing P(1,1) = 0 for identical photons](figures/hom_effect_and_dip.png)
+
+Identical photons at a 50:50 beam splitter show destructive two-photon
+interference and a zero-coincidence dip at zero delay.
+
