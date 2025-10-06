@@ -114,3 +114,5 @@ and generate the Fock-space basis used throughout the notebooks.
 | 5 | `05_beam_splitter_hom.ipynb` | Beam splitters and HOM | Two-photon interference and P(1,1) = 0 |
 | 6 | `06_entanglement_bell.ipynb` | Entanglement and Bell tests | CHSH violation, correlations, and concurrence |
 
+## Reproduce
+
