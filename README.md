@@ -37,3 +37,11 @@ Six phase-space portraits on a shared X,P convention, including Wigner
 negativity for Fock states and Gaussian positivity for coherent,
 squeezed-vacuum, and squeezed-coherent examples.
 
+### Photon Statistics
+
+![g^2(0) bar chart showing zero-delay photon-statistics regimes](figures/g2_bar_chart_comparison.png)
+
+Zero-delay photon-correlation regimes: antibunching, Poissonian light, and
+bunching. The value of g^2(0) is a useful diagnostic, not a complete state
+classifier.
+
