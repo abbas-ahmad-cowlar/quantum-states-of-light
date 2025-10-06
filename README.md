@@ -52,3 +52,10 @@ classifier.
 Identical photons at a 50:50 beam splitter show destructive two-photon
 interference and a zero-coincidence dip at zero delay.
 
+### Bell/CHSH Violation
+
+![CHSH S-parameter exceeding the classical bound S = 2](figures/bell_chsh_violation.png)
+
+The singlet-state CHSH calculation reaches S = 2 sqrt(2), exceeding the
+local-realist bound while respecting no-signaling.
+
