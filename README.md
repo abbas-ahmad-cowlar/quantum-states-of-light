@@ -116,3 +116,8 @@ and generate the Fock-space basis used throughout the notebooks.
 
 ## Reproduce
 
+### Prerequisites
+
+- Python 3.14 tested; see `environment_report.txt` for exact versions.
+- pip.
+
