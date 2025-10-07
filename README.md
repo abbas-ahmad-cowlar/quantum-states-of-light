@@ -173,3 +173,23 @@ quantum-states-of-light/
     └── truncation_check.py
 ```
 
+## Classifying Quantum Light
+
+```text
+                    Measure g^2(0)
+                          |
+            +-------------+-------------+
+            |             |             |
+        g^2(0) < 1    g^2(0) = 1    g^2(0) > 1
+            |             |             |
+      Antibunching    Poissonian      Bunching
+     Sub-Poissonian      Q = 0     Super-Poissonian
+            |                           |
+       Fock states                 Thermal light,
+                                  squeezed vacuum
+```
+
+Use g^2(0) together with photon-number distributions, Wigner functions, mean
+photon number, and quadrature statistics. A single scalar diagnostic does not
+uniquely determine the state.
+
