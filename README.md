@@ -193,3 +193,7 @@ Use g^2(0) together with photon-number distributions, Wigner functions, mean
 photon number, and quadrature statistics. A single scalar diagnostic does not
 uniquely determine the state.
 
+## Author
+
+Syed Abbas Ahmad
+
