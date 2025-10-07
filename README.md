@@ -144,3 +144,32 @@ python -m pytest tests/ -q
 python verify_notebooks.py
 ```
 
+## Project Structure
+
+```text
+quantum-states-of-light/
+├── README.md
+├── requirements.txt
+├── requirements-lock.txt
+├── environment_report.txt
+├── LICENSE
+├── verify_notebooks.py
+├── src/
+│   └── qo_utils.py
+├── notebooks/
+│   ├── 01_fock_states.ipynb
+│   ├── 02_coherent_states.ipynb
+│   ├── 03_squeezed_states.ipynb
+│   ├── 04_photon_statistics.ipynb
+│   ├── 05_beam_splitter_hom.ipynb
+│   └── 06_entanglement_bell.ipynb
+├── figures/
+│   └── generated plots in PNG and SVG formats
+└── tests/
+    ├── test_qo_utils.py
+    ├── test_core_functions.py
+    ├── qutip_orientation.py
+    ├── smoke_test.py
+    └── truncation_check.py
+```
+
