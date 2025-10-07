@@ -121,3 +121,13 @@ and generate the Fock-space basis used throughout the notebooks.
 - Python 3.14 tested; see `environment_report.txt` for exact versions.
 - pip.
 
+### Installation
+
+```bash
+git clone https://github.com/abbas-ahmad-cowlar/quantum-states-of-light.git
+cd quantum-states-of-light
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
