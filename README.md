@@ -137,3 +137,10 @@ pip install -r requirements.txt
 jupyter notebook notebooks/
 ```
 
+### Run tests
+
+```bash
+python -m pytest tests/ -q
+python verify_notebooks.py
+```
+
