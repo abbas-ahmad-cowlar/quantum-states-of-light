@@ -197,3 +197,8 @@ uniquely determine the state.
 
 Syed Abbas Ahmad
 
+## References
+
+- Gerry and Knight, *Introductory Quantum Optics* (Cambridge, 2005)
+- Fox, *Quantum Optics: An Introduction* (Oxford, 2006)
+- [QuTiP Documentation](https://qutip.org)
