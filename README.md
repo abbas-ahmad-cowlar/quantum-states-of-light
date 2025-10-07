@@ -131,3 +131,9 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### Run notebooks
+
+```bash
+jupyter notebook notebooks/
+```
+
