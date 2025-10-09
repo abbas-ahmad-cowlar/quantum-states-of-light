@@ -38,3 +38,8 @@ EXPECTED_FIGURE_BASES = [
 results = {}
 
 
+def assert_close(name, value, expected, atol):
+    if not np.isclose(value, expected, atol=atol, rtol=0):
+        raise AssertionError(f"{name}: got {value}, expected {expected} +/- {atol}")
+
+
