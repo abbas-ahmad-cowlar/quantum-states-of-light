@@ -96,7 +96,7 @@ def run_physics_sentinels():
 # Check figures
 print("=== Figure Manifest Check ===")
 for fig_base in EXPECTED_FIGURE_BASES:
-    for ext in [".png", ".svg"]:
+    for ext in [".png"]:
         fig = f"{fig_base}{ext}"
         path = FIG_DIR / fig
         if not path.exists():

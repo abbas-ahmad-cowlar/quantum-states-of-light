@@ -26,6 +26,9 @@ dist/
 *.hdf5
 *.h5
 
+# Generated vector figures; PNG versions are tracked for docs
+figures/*.svg
+
 # Temporary, backup, and log files
 *.tmp
 *.bak
